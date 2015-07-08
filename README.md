@@ -10,3 +10,13 @@ El de data es Random Access
 
 ##2. Plantear Teoria para marcar a-b-c 
 Posiblmente: Un caso para modelarlo o programarlo.
+
+
+
+##Repaso Teorico:
+###Threads:
+Multitasking vs MultThreading: 
+###1) Variables Atomicas
+###2) Lock
+###3) Sincronizadores
+###4) Concurrency Collections Framework

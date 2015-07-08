@@ -93,19 +93,18 @@ public class BuscarArchivo {
     /**
      * Metodo para leer el segundo archivo. Sera un archivo de acceso Random
      * direccionando el cursor a la posiciones entregadas segun el arreglo de punteros
-     * leidos del archivo antet
+     * leidos del archivo anterior
      */
     private static void leerArchivoRandom(ArrayList<Integer> indices) {
         try {
             File dataFile = new File("PruebaRepasoJava-ran.txt");
-            RandomAccessFile inputFile = null;
-            inputFile = new RandomAccessFile(dataFile, "r");
-            String mensaje = "";
+            RandomAccessFile inputFile = new RandomAccessFile(dataFile, "r");
+            StringBuffer mensaje = new StringBuffer();
             //Recorrer los indices
             for (Integer indice : indices) {
                 inputFile.seek(indice);
                 //Añadir al mensaje
-                mensaje += inputFile.readChar();
+                mensaje.append(inputFile.readChar());
             }
             //Imprimir mensaje
             System.out.println(mensaje);

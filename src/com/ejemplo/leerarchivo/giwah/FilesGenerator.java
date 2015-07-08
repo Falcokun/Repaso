@@ -7,9 +7,7 @@ package com.ejemplo.leerarchivo.giwah;/*
 
 import com.ejemplo.leerarchivo.giwah.solution.RandomReader;
 import com.ejemplo.leerarchivo.giwah.solution.SecuentialReader;
-import com.ejemplo.leerarchivo.giwah.utils.RandomWritter;
-import com.ejemplo.leerarchivo.giwah.utils.Receiver;
-import com.ejemplo.leerarchivo.giwah.utils.SecuentialWritter;
+import com.ejemplo.leerarchivo.giwah.utils.*;
 
 /**
  * El Giwiro

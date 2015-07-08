@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 public class SecuentialWritter implements Writter {
 
     private final static int MAX_CURSOR = 10000;
-    private final String fileType = "sec";
-    private final String extension = "txt";
+    private static final String fileType = "sec";
+    private static final String extension = "txt";
     private List<Integer> cursors;
     private FileOutputStream outputFile;
     private BufferedOutputStream bufferedOutput;
@@ -53,8 +53,6 @@ public class SecuentialWritter implements Writter {
                 cursor = randito.nextInt(MAX_CURSOR) + 1;
             }
             c.add(cursor);
-            char letra = mensaje.charAt(i);
-
         }
 
         readyForWrite = true;
@@ -65,9 +63,8 @@ public class SecuentialWritter implements Writter {
     public void writeFile() {
         if (this.readyForWrite) {
             try {
-                for (int i = 0; i < this.cursors.size(); i++) {
-                    int temp = (int) this.cursors.get(i);
-                    //System.out.println(i+":\t"+temp);
+                for (Integer cursor : this.cursors) {
+                    int temp = cursor;
                     outputStream.writeInt(temp);
                 }
                 outputStream.close();
@@ -81,8 +78,8 @@ public class SecuentialWritter implements Writter {
     }
 
     private boolean isRepeated(int number, List arrayList) {
-        for (int i = 0; i < arrayList.size(); i++) {
-            int t = (int) arrayList.get(i);
+        for (Object anArrayList : arrayList) {
+            int t = (int) anArrayList;
             if (number == t) {
                 System.out.println("REPETIDO !!!");
                 return true;

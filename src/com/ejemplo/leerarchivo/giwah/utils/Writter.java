@@ -9,5 +9,5 @@ package com.ejemplo.leerarchivo.giwah.utils;
  * EL Giwiro
  */
 public interface Writter {
-    public void writeFile();
+    void writeFile();
 }

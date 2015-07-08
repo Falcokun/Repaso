@@ -17,11 +17,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author giwiro
+ * El Giwiro
  */
 public class SecuentialReader {
-    
+
     private final String fileType = "sec";
     private final String extension = "txt";
     private String fileName;
@@ -34,34 +33,33 @@ public class SecuentialReader {
         cursors = new ArrayList<>();
         fileName = "giwiro";
     }
-    
-    private void initializeComponents(){
+
+    private void initializeComponents() {
         try {
             inputFile = new FileInputStream(fileName + "-" + fileType + "." + extension);
             bufferedInput = new BufferedInputStream(inputFile);
             inputStream = new DataInputStream(bufferedInput);
-    
+
         } catch (FileNotFoundException noFile) {
             System.err.println("File not found! " + noFile);
         } catch (Throwable anything) {
             System.err.println("Abnormal exception caught !: " + anything);
         }
     }
-    
-    public void setFileName(String fileName){
+
+    public void setFileName(String fileName) {
         this.fileName = fileName;
         initializeComponents();
     }
-    
-    public void readFile(){
+
+    public void readFile() {
         try {
             System.out.print("SecuentialReader >> cursors: [");
-            while(true){
+            while (true) {
                 int a = inputStream.readInt();
                 cursors.add(a);
                 System.out.print(a + ",");
             }
-            
         } catch (EOFException eof) {
             System.out.print("]\n");
         } catch (FileNotFoundException noFile) {
@@ -80,10 +78,10 @@ public class SecuentialReader {
             }
         }
     }
-    
+
     public List<Integer> getCursors() {
         return this.cursors;
     }
-    
-    
+
+
 }

@@ -63,6 +63,10 @@ public class BuscarArchivo {
         }
     }
 
+    /**
+     * Metodo de leer el archivo base. Lee los numeros que seran posiciones, y los guarda en un arreglo
+     * Este arreglo seran los punteros desde donde leer las posiciones.
+     */
     private static void leerArchivoBase(Path path) {
         FileInputStream inputFile = null;
         try {
@@ -71,11 +75,14 @@ public class BuscarArchivo {
             DataInputStream buf = new DataInputStream(reader);
             ArrayList<Integer> indices = new ArrayList<>();
             Integer temp;
+            //Mientras el buffer tenga algo que leer se seguira leyendo, para que no crashee
             while (buf.available() > 0) {
                 temp = buf.readInt();
                 System.out.println("Linea: " + temp);
                 indices.add(temp);
             }
+            inputFile.close();
+            //Ir  a leer archivo
             leerArchivoRandom(indices);
 
         } catch (IOException e) {
@@ -83,22 +90,29 @@ public class BuscarArchivo {
         }
     }
 
+    /**
+     * Metodo para leer el segundo archivo. Sera un archivo de acceso Random
+     * direccionando el cursor a la posiciones entregadas segun el arreglo de punteros
+     * leidos del archivo antet
+     */
     private static void leerArchivoRandom(ArrayList<Integer> indices) {
         try {
             File dataFile = new File("PruebaRepasoJava-ran.txt");
             RandomAccessFile inputFile = null;
             inputFile = new RandomAccessFile(dataFile, "r");
             String mensaje = "";
+            //Recorrer los indices
             for (Integer indice : indices) {
                 inputFile.seek(indice);
+                //Añadir al mensaje
                 mensaje += inputFile.readChar();
             }
+            //Imprimir mensaje
             System.out.println(mensaje);
             inputFile.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }

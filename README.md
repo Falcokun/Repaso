@@ -44,15 +44,24 @@ USO: Lock and Unlock -> no puede hacerle lock y el codigo esta esperando que hay
 <br>
 DeadLock | Abrazo de la muerte
 ###3) Sincronizadores
+#####Barriers
+Esperan que todos lleguen a la barrera y continua el codigo, una sola etapa
 #####Phaser
 La diferencia con las barreras es que el phaser se pueden agregar o remover participantes en cualquier punto
 Los Phaser tiene un numero de fases que inicia en 0, cuando llega el participante, se aumenta en 1. 
 Cuando llegan a la barrier, todos pasan a la siguiente etapa.
+<br>
+Tiene Fases. 
+#####Semaforos
 #####Latcher
-Similares a las barreras, detiene algo hasta que se cumpla una condicion dada
+Similares a las barreras, detiene algo hasta que se cumpla una condicion dada.
 #####Exchangers
-Permite cambiar un elemento entre 2 hilos
+Permite cambiar un elemento entre 2 hilos-
 #####Frameworks
+######Executors
+Lo de la alarma
+
+######Joins
 java.time 80clases
 JDK 8 -> Separa el tiempo Machine y Human
 <br>

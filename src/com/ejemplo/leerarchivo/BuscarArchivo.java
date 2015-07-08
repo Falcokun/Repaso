@@ -19,9 +19,7 @@ public class BuscarArchivo {
         Path path = FileSystems.getDefault().getPath("C:\\Users\\Ricardo");
         time = System.currentTimeMillis();
         System.out.println("Hora de inicio: " + time);
-
         buscarArchivo(path);
-
     }
 
     private static void buscarArchivo(Path path) throws IOException {
@@ -39,12 +37,16 @@ public class BuscarArchivo {
                         System.out.println("Encontrado");
                         System.out.println("Tiempo final: " + System.currentTimeMillis());
                         System.out.println("Tiempo Tardado: " + ((System.currentTimeMillis() - time) / 1000) + " segundos");
+                        leerArchivoBase(path);
                     }
                 }
             } catch (Exception ignored) {
-
             }
         }
+    }
+
+    private static void leerArchivoBase(Path path) {
+
     }
 
 

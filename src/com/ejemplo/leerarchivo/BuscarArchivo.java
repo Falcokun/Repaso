@@ -6,6 +6,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 /**
  * Created by Ricardo on 06/07/2015.
@@ -13,13 +14,16 @@ import java.util.ArrayList;
  */
 public class BuscarArchivo {
     static boolean encontrado;
-    static String nombrearchivo = "PruebaRepasoJava-sec.txt";
+    static final String nombrearchivo = "PruebaRepasoJava-sec.txt";
+    static Pattern p = Pattern.compile("(.*)-sec\\.txt");
+    static String nombreOtroArchivo;
     static long time;
 
     public static void main(String[] args) throws IOException {
         //Todo: Cambiar ruta de busqueda:
         Path path = FileSystems.getDefault().getPath("C:\\");
         path = FileSystems.getDefault().getPath("C:\\Users\\Ricardo\\Dropbox\\Ulima\\2015-1");
+
         time = System.currentTimeMillis();
         System.out.println("Hora de inicio: " + time);
         buscarArchivo(path);
@@ -45,6 +49,7 @@ public class BuscarArchivo {
                     //System.out.println(path.getFileName().toString());
 
                     //Si el nombre del archivo es el que estamos buscando
+                    //Metodo 1: Con busqueda
                     if (nombrearchivo.equals(path.getFileName().toString())) {
                         encontrado = true;
                         System.out.println("Encontrado");
@@ -52,6 +57,18 @@ public class BuscarArchivo {
                         System.out.println("Tiempo Tardado: " + ((System.currentTimeMillis() - time) / 1000) + " segundos");
                         System.out.println("El archivo estaba en:\n" + path);
                         leerArchivoBase(path);
+                    }
+
+                    //Metodo 2;
+                    //TODO: test regex
+                    if (p.matcher(path.getFileName().toString()).matches()) {
+                        encontrado = true;
+                        System.out.println("Encontrado");
+                        System.out.println("Tiempo final: " + System.currentTimeMillis());
+                        System.out.println("Tiempo Tardado: " + ((System.currentTimeMillis() - time) / 1000) + " segundos");
+                        System.out.println("El archivo estaba en:\n" + path);
+                        nombreOtroArchivo = p.matcher(path.getFileName().toString()).group(1) + "-ran.txt";
+                        System.out.println("El otro archivo sera: " + nombrearchivo);
                     }
                 }
             } catch (Exception ignored) {

@@ -35,5 +35,28 @@ AtomicFieldUpdate... y etc
 Atomic MarkeableReference // AtomicStampedReference
 
 ###2) Lock
+ExplicitLock -> Lock y ReentrantLock<br>
+Lock es la interfaz mas bascia y ReentranLock es una clase basica que implementa Lock<.
+Solo un hilo puede poseer el lock al mismo tiempo, para acceder al recurso compartido, se requeire poseer el lock.
+<br>
+ReentrantLock es una clase.<br>
+USO: Lock and Unlock -> no puede hacerle lock y el codigo esta esperando que haya unlock para continuar.
+<br>
+DeadLock | Abrazo de la muerte
 ###3) Sincronizadores
+#####Phaser
+La diferencia con las barreras es que el phaser se pueden agregar o remover participantes en cualquier punto
+Los Phaser tiene un numero de fases que inicia en 0, cuando llega el participante, se aumenta en 1. 
+Cuando llegan a la barrier, todos pasan a la siguiente etapa.
+#####Latcher
+Similares a las barreras, detiene algo hasta que se cumpla una condicion dada
+#####Exchangers
+Permite cambiar un elemento entre 2 hilos
+#####Frameworks
+java.time 80clases
+JDK 8 -> Separa el tiempo Machine y Human
+<br>
+Legacy Api vs New Api (Java 8)
+
+
 ###4) Concurrency Collections Framework
